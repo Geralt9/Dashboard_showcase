@@ -1,0 +1,23 @@
+.pipeline {
+  display: flex;
+  gap: 2px;
+  height: 6px;
+  width: 100%;
+  min-width: 110px;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.pipeline__fill {
+  background: var(--success);
+  transition: width 400ms ease;
+}
+
+.pipeline__rest {
+  flex: 1;
+  background: #e8eaee;
+}
+
+.pipeline--late .pipeline__rest {
+  background: var(--danger);
+}

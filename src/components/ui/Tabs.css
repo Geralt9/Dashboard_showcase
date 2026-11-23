@@ -1,0 +1,69 @@
+.tabs {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Underline tabs */
+.tabs--underline {
+  gap: 18px;
+}
+
+.tabs--underline .tabs__item {
+  position: relative;
+  padding: 4px 0 8px;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  transition: color var(--ease);
+}
+
+.tabs--underline .tabs__item:hover {
+  color: var(--text);
+}
+
+.tabs--underline .tabs__item.is-active {
+  color: var(--purple);
+  font-weight: 600;
+}
+
+.tabs--underline .tabs__item.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--purple);
+}
+
+/* Segmented toggle */
+.tabs--segmented {
+  gap: 2px;
+  padding: 3px;
+  background: #eceef1;
+  border-radius: var(--radius-md);
+}
+
+.tabs--segmented .tabs__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 8px;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: background var(--ease), color var(--ease), box-shadow var(--ease);
+}
+
+.tabs--segmented .tabs__item:hover {
+  color: var(--text);
+}
+
+.tabs--segmented .tabs__item.is-active {
+  background: #fff;
+  color: var(--text);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08);
+}

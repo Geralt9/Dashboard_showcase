@@ -1,0 +1,33 @@
+/* Mirrors the reference: KPIs on top, then a wide left column + narrow right column. */
+.dashboard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  grid-template-areas:
+    'kpis kpis'
+    'table today'
+    'calendar deadlines';
+  gap: var(--gap);
+  align-items: start;
+}
+
+.dashboard__kpis { grid-area: kpis; }
+.dashboard__table { grid-area: table; }
+.dashboard__today { grid-area: today; }
+.dashboard__calendar { grid-area: calendar; }
+.dashboard__deadlines { grid-area: deadlines; }
+
+.dashboard > div > .card {
+  height: 100%;
+}
+
+@media (max-width: 1100px) {
+  .dashboard {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'kpis'
+      'table'
+      'today'
+      'calendar'
+      'deadlines';
+  }
+}

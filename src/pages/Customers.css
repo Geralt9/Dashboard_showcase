@@ -1,0 +1,24 @@
+.customers__name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.customers__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--purple-soft);
+  color: var(--purple);
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.customers__chev {
+  color: var(--text-subtle);
+  width: 32px;
+}

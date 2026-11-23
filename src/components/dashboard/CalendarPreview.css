@@ -1,0 +1,230 @@
+.cal-preview .card__body {
+  padding-top: 0;
+}
+
+.cal-preview__tabs {
+  margin-top: -4px;
+  border-bottom: 1px solid var(--divider);
+  width: 100%;
+}
+
+.cal-preview__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 16px 0 12px;
+}
+
+.cal-preview__bar h4 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cal-preview__bar p {
+  font-size: var(--fs-xs);
+}
+
+.cal-preview__controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------- Week / day grid ---------- */
+.cal-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(96px, 1fr));
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+.cal-preview__grid.is-day {
+  grid-template-columns: 1fr;
+}
+
+.cal-preview__col {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--card-border);
+  min-width: 0;
+}
+
+.cal-preview__col:last-child {
+  border-right: 0;
+}
+
+.cal-preview__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 4px 6px;
+  border-bottom: 1px solid var(--card-border);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.cal-preview__head strong {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.cal-preview__col.is-today .cal-preview__head {
+  background: var(--purple-soft);
+  color: var(--purple);
+  box-shadow: inset 0 -2px 0 var(--purple);
+}
+
+.cal-preview__col.is-today .cal-preview__head strong {
+  color: var(--purple);
+}
+
+.cal-preview__col.is-weekend .cal-preview__cell {
+  background: repeating-linear-gradient(135deg, #f6f7f9 0 8px, #eff1f4 8px 9px);
+}
+
+.cal-preview__cell {
+  flex: 1;
+  min-height: 150px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Capacity tag in day headers (shared with the full calendar) */
+.cap {
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 99px;
+  background: #f1f2f4;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.cap--high {
+  background: var(--warning-soft);
+  color: #b45309;
+}
+
+.cap--over {
+  background: var(--danger-soft);
+  color: #c52d33;
+}
+
+/* ---------- Job blocks ---------- */
+.job {
+  --job: var(--purple);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 6px 7px;
+  border-radius: 6px;
+  border-left: 3px solid var(--job);
+  background: color-mix(in srgb, var(--job) 9%, white);
+  text-align: left;
+  font-size: var(--fs-xs);
+  transition: box-shadow var(--ease), transform var(--ease);
+  min-width: 0;
+  width: 100%;
+}
+
+.job:hover {
+  box-shadow: 0 3px 10px rgba(16, 24, 40, 0.1);
+}
+
+.job--done { --job: var(--success); opacity: 0.75; }
+.job--late { --job: var(--danger); }
+.job--in-progress,
+.job--at-risk { --job: var(--warning); }
+
+.job__title {
+  font-weight: 600;
+  color: var(--text);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.job__meta {
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+
+.job .tag {
+  height: 17px;
+  font-size: 10px;
+}
+
+/* ---------- Month grid ---------- */
+.cal-preview__month {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.cal-preview__dow {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-align: center;
+  padding-bottom: 4px;
+}
+
+.cal-preview__mday {
+  height: 56px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  transition: background var(--ease);
+}
+
+.cal-preview__mday:hover {
+  background: var(--hover-bg);
+}
+
+.cal-preview__mday.is-outside {
+  color: var(--text-subtle);
+}
+
+.cal-preview__mday.is-today {
+  border-color: var(--purple);
+  color: var(--purple);
+  background: var(--purple-soft);
+}
+
+.cal-preview__dots {
+  display: flex;
+  gap: 3px;
+}
+
+.job-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--purple);
+}
+
+.job-dot--done { background: var(--success); }
+.job-dot--late { background: var(--danger); }
+.job-dot--in-progress,
+.job-dot--at-risk { background: var(--warning); }
+
+@media (max-width: 700px) {
+  .cal-preview__grid {
+    grid-template-columns: repeat(7, 110px);
+  }
+}

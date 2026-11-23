@@ -1,0 +1,25 @@
+.garments__link {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  text-align: left;
+}
+
+.garments__link:hover {
+  color: var(--purple);
+  text-decoration: underline;
+}
+
+.garments__item {
+  display: block;
+  white-space: nowrap;
+}
+
+.garments__actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.garments__actions .btn + .btn {
+  margin-left: 6px;
+}

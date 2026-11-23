@@ -1,0 +1,83 @@
+.stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(9, minmax(48px, 1fr));
+  overflow-x: auto;
+}
+
+.stepper__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+/* Connector line to the previous step */
+.stepper__step + .stepper__step::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  right: 50%;
+  width: 100%;
+  height: 2px;
+  background: #e5e7eb;
+  z-index: 0;
+}
+
+.stepper__step.is-done + .stepper__step::before,
+.stepper__step.is-current::before {
+  background: var(--success);
+}
+
+.stepper__dot {
+  position: relative;
+  z-index: 1;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  color: var(--text-subtle);
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+
+.stepper__dot:not(:disabled):hover {
+  transform: scale(1.1);
+}
+
+.stepper__dot:disabled {
+  cursor: default;
+}
+
+.is-done .stepper__dot {
+  background: var(--success);
+  border-color: var(--success);
+  color: #fff;
+}
+
+.is-current .stepper__dot {
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--current) 22%, transparent);
+}
+
+.stepper__label {
+  font-size: 10px;
+  line-height: 1.2;
+  color: var(--text-muted);
+  padding: 0 2px;
+}
+
+.is-current .stepper__label {
+  color: var(--text);
+  font-weight: 600;
+}
